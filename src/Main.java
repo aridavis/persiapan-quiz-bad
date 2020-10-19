@@ -115,6 +115,30 @@ public class Main {
                     name = scan.nextLine();
                 }while(name.length() < 5 || name.length() > 20);
 
+                Vehicle v;
+
+                if(type.equals("SW-Car")){
+                    Integer capacity = 0;
+                    do{
+                        System.out.print("Input Capacity [4 - 6]: ");
+                        capacity = scan.nextInt();
+                        scan.nextLine();
+                    }while(capacity < 4 || capacity > 6);
+                    v = new Car(license, type, driverName, name, capacity);
+                }
+                else{
+                    String service = "";
+                    do{
+                        System.out.print("Input Service Type [Ride | Food]: ");
+                        service = scan.nextLine();
+                    }while (service.equals("Ride") == false && service.equals("Food") == false);
+                    v = new Ojek(license, type, driverName, name, service);
+                }
+
+                vehicles.add(v);
+                System.out.println("Success Adding Vehicle");
+                scan.nextLine();
+
 
             }
 
