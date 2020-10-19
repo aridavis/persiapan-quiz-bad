@@ -1,3 +1,5 @@
+import com.sun.org.apache.xalan.internal.xsltc.trax.XSLTCSource;
+
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -178,7 +180,39 @@ public class Main {
                         scan.nextLine();
                     }while (choice < 1 || choice > vehicles.size());
 
+                    Vehicle chosen = vehicles.get(choice - 1);
 
+                    Integer distance = 0;
+                    do {
+                        System.out.println("Input Distance [more than or equals 1]");
+                        distance = scan.nextInt();
+                        scan.nextLine();
+                    }while(distance < 1);
+
+                    Integer totalPrice = 0;
+
+                    if(chosen.getType().equals("SW-Car")){
+                        totalPrice += 15000;
+                        distance -= 5;
+                        if(distance > 0){
+                            totalPrice += (distance * 5000);
+                        }
+                    }
+                    else{
+                        totalPrice += 10000;
+                        distance -= 5;
+                        if(distance > 0){
+                            if( ((Ojek)chosen).getService().equals("Food")){
+                                distance += (distance * 2000);
+                            }
+                            else{
+                                distance += (distance * 3500);
+                            }
+                        }
+                    }
+
+                    System.out.println("Total Price: Rp. " + totalPrice);
+                    scan.nextLine();
 
                 }
             }
