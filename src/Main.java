@@ -127,6 +127,78 @@ public class Main {
         scan.nextLine();
     }
 
+    public void chooseService(){
+        enter();
+        if(vehicles.isEmpty()){
+            System.out.println("No vehicle");
+            scan.nextLine();
+        }
+        else{
+            for(int i = 0 ;i<vehicles.size();i++){
+                Vehicle x = vehicles.get(i);
+                System.out.println("No: " + (i+1));
+                System.out.println("Driver Name: "  + x.getDriverName());
+                System.out.println("Vehicle Name: "  + x.getName());
+                System.out.print("Capacity: ");
+                if(x instanceof Car){
+                    System.out.println(((Car)x).getCapacity());
+                }
+                else{
+                    System.out.println("-");
+                }
+                System.out.print("Service: ");
+                if(x instanceof Ojek){
+                    System.out.println(((Ojek) x).getService());
+                }
+                else{
+                    System.out.println("-");
+                }
+            }
+
+            Integer choice = 0;
+
+            do{
+                System.out.print("Choose Vehicle [1 - " + vehicles.size() + "]: ");
+                choice = scan.nextInt();
+                scan.nextLine();
+            }while (choice < 1 || choice > vehicles.size());
+
+            Vehicle chosen = vehicles.get(choice - 1);
+
+            Integer distance = 0;
+            do {
+                System.out.println("Input Distance [more than or equals 1]");
+                distance = scan.nextInt();
+                scan.nextLine();
+            }while(distance < 1);
+
+            Integer totalPrice = 0;
+
+            if(chosen.getType().equals("SW-Car")){
+                totalPrice += 15000;
+                distance -= 5;
+                if(distance > 0){
+                    totalPrice += (distance * 5000);
+                }
+            }
+            else{
+                totalPrice += 10000;
+                distance -= 5;
+                if(distance > 0){
+                    if( ((Ojek)chosen).getService().equals("Food")){
+                        distance += (distance * 2000);
+                    }
+                    else{
+                        distance += (distance * 3500);
+                    }
+                }
+            }
+
+            System.out.println("Total Price: Rp. " + totalPrice);
+            scan.nextLine();
+        }
+    }
+
     public Main(){
         Integer input = 0;
 
@@ -145,76 +217,7 @@ public class Main {
                 insertVehicle();
             }
             else if(input == 2){
-                enter();
-                if(vehicles.isEmpty()){
-                    System.out.println("No vehicle");
-                    scan.nextLine();
-                }
-                else{
-                    for(int i = 0 ;i<vehicles.size();i++){
-                        Vehicle x = vehicles.get(i);
-                        System.out.println("No: " + (i+1));
-                        System.out.println("Driver Name: "  + x.getDriverName());
-                        System.out.println("Vehicle Name: "  + x.getName());
-                        System.out.print("Capacity: ");
-                        if(x instanceof Car){
-                            System.out.println(((Car)x).getCapacity());
-                        }
-                        else{
-                            System.out.println("-");
-                        }
-                        System.out.print("Service: ");
-                        if(x instanceof Ojek){
-                            System.out.println(((Ojek) x).getService());
-                        }
-                        else{
-                            System.out.println("-");
-                        }
-                    }
 
-                    Integer choice = 0;
-
-                    do{
-                        System.out.print("Choose Vehicle [1 - " + vehicles.size() + "]: ");
-                        choice = scan.nextInt();
-                        scan.nextLine();
-                    }while (choice < 1 || choice > vehicles.size());
-
-                    Vehicle chosen = vehicles.get(choice - 1);
-
-                    Integer distance = 0;
-                    do {
-                        System.out.println("Input Distance [more than or equals 1]");
-                        distance = scan.nextInt();
-                        scan.nextLine();
-                    }while(distance < 1);
-
-                    Integer totalPrice = 0;
-
-                    if(chosen.getType().equals("SW-Car")){
-                        totalPrice += 15000;
-                        distance -= 5;
-                        if(distance > 0){
-                            totalPrice += (distance * 5000);
-                        }
-                    }
-                    else{
-                        totalPrice += 10000;
-                        distance -= 5;
-                        if(distance > 0){
-                            if( ((Ojek)chosen).getService().equals("Food")){
-                                distance += (distance * 2000);
-                            }
-                            else{
-                                distance += (distance * 3500);
-                            }
-                        }
-                    }
-
-                    System.out.println("Total Price: Rp. " + totalPrice);
-                    scan.nextLine();
-
-                }
             }
 
         }while(input != 4);
