@@ -166,16 +166,20 @@ public class Main {
                             System.out.println(((Ojek) x).getService());
                         }
                         else{
-                            System.out.print("Capacity: ");
-                            if(x instanceof Car){
-                                System.out.println(((Car)x).getCapacity());
-                            }
-                            else{
-                                System.out.println("-");
-                            }
+                            System.out.println("-");
                         }
-
                     }
+
+                    Integer choice = 0;
+
+                    do{
+                        System.out.print("Choose Vehicle [1 - " + vehicles.size() + "]: ");
+                        choice = scan.nextInt();
+                        scan.nextLine();
+                    }while (choice < 1 || choice > vehicles.size());
+
+
+
                 }
             }
 
