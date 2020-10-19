@@ -99,6 +99,23 @@ public class Main {
                     break;
                 }
 
+                // Validasi Vehicle Type
+                do{
+                    System.out.print("Input Vehicle Type [SW-Car | SW-Ojek]: ");
+                    type = scan.nextLine();
+                }while(type.equals("SW-Car") == false && type.equals("SW-Ojek") == false);
+
+                do{
+                    System.out.print("Input Driver Name [5-30 chars]: ");
+                    driverName = scan.nextLine();
+                }while(driverName.length() < 5 || driverName.length() > 30);
+
+                do{
+                    System.out.print("Input Vehicle Name [5-20 chars]: ");
+                    name = scan.nextLine();
+                }while(name.length() < 5 || name.length() > 20);
+
+
             }
 
         }while(input != 4);
