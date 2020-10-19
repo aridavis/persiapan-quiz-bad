@@ -217,7 +217,44 @@ public class Main {
                 insertVehicle();
             }
             else if(input == 2){
+                chooseService();
+            }
+            else if(input == 3){
+                if(vehicles.isEmpty()){
+                    System.out.println("No vehicle");
+                    scan.nextLine();
+                }
+                else {
+                    for (int i = 0; i < vehicles.size(); i++) {
+                        Vehicle x = vehicles.get(i);
+                        System.out.println("No: " + (i + 1));
+                        System.out.println("Driver Name: " + x.getDriverName());
+                        System.out.println("Vehicle Name: " + x.getName());
+                        System.out.print("Capacity: ");
+                        if (x instanceof Car) {
+                            System.out.println(((Car) x).getCapacity());
+                        } else {
+                            System.out.println("-");
+                        }
+                        System.out.print("Service: ");
+                        if (x instanceof Ojek) {
+                            System.out.println(((Ojek) x).getService());
+                        } else {
+                            System.out.println("-");
+                        }
+                    }
+                    Integer choice = 0;
 
+                    do{
+                        System.out.print("Choose Vehicle [1 - " + vehicles.size() + "]: ");
+                        choice = scan.nextInt();
+                        scan.nextLine();
+                    }while (choice < 1 || choice > vehicles.size());
+
+                    vehicles.removeElementAt(choice - 1);
+                    System.out.println("Success Deleting Vehicles");
+                    scan.nextLine();
+                }
             }
 
         }while(input != 4);
