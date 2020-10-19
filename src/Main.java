@@ -58,8 +58,12 @@ public class Main {
                         }
                     }
 
+                    if(isValid == false){
+                        continue;
+                    }
+
                     // Validasi Y
-                    String y = splitted[0];
+                    String y = splitted[1];
                     if(y.length() < 1 || y.length() > 4){
                         continue;
                     }
@@ -71,8 +75,12 @@ public class Main {
                         }
                     }
 
+                    if(isValid == false){
+                        continue;
+                    }
+
                     // Validasi Z
-                    String z = splitted[0];
+                    String z = splitted[2];
                     if(z.length() < 1 || z.length() > 3){
                         continue;
                     }
@@ -84,7 +92,11 @@ public class Main {
                         }
                     }
 
+                    if(isValid == false){
+                        continue;
+                    }
 
+                    break;
                 }
 
             }
