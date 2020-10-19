@@ -86,7 +86,7 @@ public class Main {
                     }
 
                     for(int i = 0; i < z.length();i++){
-                        if(Character.isDigit(z.charAt(i)) == false){
+                        if(Character.isAlphabetic(z.charAt(i)) == false){
                             isValid = false;
                             break;
                         }
@@ -95,7 +95,6 @@ public class Main {
                     if(isValid == false){
                         continue;
                     }
-
                     break;
                 }
 
@@ -138,7 +137,6 @@ public class Main {
                 vehicles.add(v);
                 System.out.println("Success Adding Vehicle");
                 scan.nextLine();
-
 
             }
 
