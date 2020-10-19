@@ -42,4 +42,6 @@ public abstract class Vehicle {
     public void setName(String name) {
         this.name = name;
     }
+
+    public abstract Integer calculatePrice(Integer distance);
 }

@@ -13,4 +13,20 @@ public class Ojek extends  Vehicle{
     public void setService(String service) {
         this.service = service;
     }
+
+    @Override
+    public Integer calculatePrice(Integer distance) {
+        Integer totalPrice = 0;
+        totalPrice += 10000;
+        distance -= 5;
+        if(distance > 0){
+            if( getService().equals("Food")){
+                totalPrice += (distance * 2000);
+            }
+            else{
+                totalPrice += (distance * 3500);
+            }
+        }
+        return totalPrice;
+    }
 }

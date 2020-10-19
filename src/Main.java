@@ -172,29 +172,7 @@ public class Main {
                 scan.nextLine();
             }while(distance < 1);
 
-            Integer totalPrice = 0;
-
-            if(chosen.getType().equals("SW-Car")){
-                totalPrice += 15000;
-                distance -= 5;
-                if(distance > 0){
-                    totalPrice += (distance * 5000);
-                }
-            }
-            else{
-                totalPrice += 10000;
-                distance -= 5;
-                if(distance > 0){
-                    if( ((Ojek)chosen).getService().equals("Food")){
-                        distance += (distance * 2000);
-                    }
-                    else{
-                        distance += (distance * 3500);
-                    }
-                }
-            }
-
-            System.out.println("Total Price: Rp. " + totalPrice);
+            System.out.println("Total Price: Rp. " + chosen.calculatePrice(distance));
             scan.nextLine();
         }
     }

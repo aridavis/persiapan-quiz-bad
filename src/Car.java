@@ -14,4 +14,15 @@ public class Car extends Vehicle{
     public void setCapacity(Integer capacity) {
         this.capacity = capacity;
     }
+
+    @Override
+    public Integer calculatePrice(Integer distance) {
+        int totalPrice = 0;
+        totalPrice += 15000;
+        distance -= 5;
+        if(distance > 0){
+            totalPrice += (distance * 5000);
+        }
+        return totalPrice;
+    }
 }
